@@ -1,0 +1,14 @@
+<app-navbar (characterfromSon)="getCharacterSon($event)"></app-navbar>
+
+<div class="container">
+  <div class="container__card_character">
+    <div *ngFor="let character of characters" (click)="openModal(character)" class="container__character">
+      <img [src]="character.image" class="card-img-top" alt="..." />
+      <div class="">
+        <h3 class="">{{ character.name }}</h3>
+      </div>
+    </div>
+  </div>
+  <app-pagination  *ngIf="characters && !loading && !search"></app-pagination>
+  <app-modal *ngIf="selectedCharacter" [character]="selectedCharacter"></app-modal>
+</div>

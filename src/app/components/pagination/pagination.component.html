@@ -1,0 +1,19 @@
+<ul class="pagination">
+  <li>
+    <a (click)="counterPrev()" [routerLink]="['/character', this.characterService.counter - 2]">
+      <span>&laquo;</span>
+    </a>
+  </li>
+
+  <li *ngFor="let pagina of paginas" [ngClass]="pagina == pageActual ? 'active' : ''">
+    <a [routerLink]="['/character', pagina]">
+      {{ pagina }}
+    </a>
+  </li>
+
+  <li>
+    <a (click)="counterNex()" [routerLink]="['/character', this.characterService.counter]">
+      <span>&raquo;</span>
+    </a>
+  </li>
+</ul>

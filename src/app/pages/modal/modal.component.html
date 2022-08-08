@@ -1,0 +1,42 @@
+<div class="modal_overlay animacion fadeIn" *ngIf="modalService.showModal" (click)="closeModal()">
+  <div class="modal" tabindex="-1">
+    <div class="modal__content ">
+      <div class="modal__name_and_button">
+        <h3>{{ character.name }}</h3>
+        <button
+          (click)="closeModal()"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal__descriptions">
+        <ul *ngIf="character" class="">
+          <li class="list-group-item"><span>Status:</span> {{ character.status }}</li>
+          <li class="list-group-item"><span>Species:</span> {{ character.species }}</li>
+          <li class="list-group-item"><span>Gender:</span> {{ character.gender }}</li>
+          <li class="list-group-item"><span>Origin:</span> {{ character.origin.name }}</li>
+          <li class="list-group-item"><span>Location:</span> {{ character.location.name }}</li>
+        </ul>
+        <div class="col-sm">
+          <img
+            *ngIf="character?.image"
+            class="img-thumbnail rounded"
+            [src]="character.image"
+            alt=""
+          />
+        </div>
+      </div>
+        <button
+          (click)="closeModal()"
+          type="button"
+          class="modal__button_close"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+.pagination {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    font-size: 27px;
+    padding: 30px;
+
+    @media screen and (min-width: 300px)  and (max-width: 760px){
+        gap: 10px;
+        font-size: 17px;
+        padding: 5px;
+    }
+}
+
+ul li a {
+    background: antiquewhite;
+    height: 45px;
+    width: 60px;
+    border-radius: 7px;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    text-decoration:none;
+    font-family: cursive;
+
+    @media screen and (min-width: 300px)  and (max-width: 760px){
+        height: 38px;
+        width: 25px;
+    }
+}
