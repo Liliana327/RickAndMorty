@@ -16,16 +16,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {}
 
   public searchCharacter(search: string, event: any): void {
-    console.log('hola')
-
     event.preventDefault();
     this.characterService.searchCharacter(search).subscribe( data => {
       this.characterfromSon.emit(data.results);
-      console.log(data.results)
     });
-
-    console.log(this.characterService)
-
   }
 
 }

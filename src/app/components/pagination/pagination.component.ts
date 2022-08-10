@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { CharacterService } from '../../services/character.service';
 
+
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
@@ -21,13 +22,13 @@ export class PaginationComponent implements OnInit {
 
   ngOnInit(): void {
     this.initPaginator(1);
-    this.activatedRoute.paramMap.subscribe( (position: Params) => {
-      let page = +position["page"];
+    this.activatedRoute.paramMap?.subscribe( (position: Params) => {
+      const page = position['params'].page;
       this.pageActual = page;
     });
   }
 
-  private initPaginator(numero: number): void {
+  initPaginator(numero: number): void {
     let next = numero;
 
     this.initialPosition = Math.min(Math.max(1, next - 4), this.publicTotalPages - 5);
@@ -41,13 +42,11 @@ export class PaginationComponent implements OnInit {
   public counterPrev(): void {
     this.characterService.counterPrev();
     this.initPaginator(this.characterService.counter);
-    console.log(this.characterService.counter);
   }
 
   public counterNex(): void {
     this.characterService.counterNex();
     this.initPaginator(this.characterService.counter);
-    console.log(this.characterService.counterNex());
   }
 
 }

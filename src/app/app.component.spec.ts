@@ -1,35 +1,41 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+
+import { TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from './app.component';
 
-describe('AppComponent', () => {
-  beforeEach(async(() => {
+const ActivatedRouteMock = {
+  url: '',
+  snapshot: {
+    params: { id: '5' },
+    queryParams: { overwrite: false },
+  },
+};
+
+
+describe('PaginationComponent', () => {
+  let component: AppComponent;
+
+  beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        HttpClientTestingModule,
       ],
-      declarations: [
-        AppComponent
+      providers: [
+        AppComponent,
+        { provide: ActivatedRoute, useValue: ActivatedRouteMock },
+
       ],
-    }).compileComponents();
-  }));
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    })
+  );
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+
+  it('should be created', () => {
+    const service: AppComponent = TestBed.inject(AppComponent);
+    expect(service).toBeTruthy();
   });
 
-  it(`should have as title 'rickandmorty'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('rickandmorty');
-  });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('rickandmorty app is running!');
-  });
 });
